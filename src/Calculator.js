@@ -33,11 +33,12 @@ class Calculator extends React.Component {
                 <br/>
                 <br/>
                 <button onClick={this._add}>+</button>
-                <button>-</button>
-                <button>/</button>
-                <button>*</button>
+                <button onClick={this._sub}>-</button>
+                <button onClick={this._div}>/</button>
+                <button onClick={this._mult}>*</button>
+              
                 <br/>
-                <div></div>
+                <div>{this.state.result}</div>
             </div>
         )
     }
@@ -49,8 +50,30 @@ class Calculator extends React.Component {
     }
 
     _add = () => {
+        const result = this.state.num1 + this.state.num2
         this.setState({
-            result: this.state.num1 + this.state.num2
+            result
+        })
+    }
+    
+    _sub = () => {
+        const result = this.state.num1 - this.state.num2
+        this.setState({
+            result
+        })
+    }
+
+    _div = () => {
+        const result = this.state.num1 / this.state.num2
+        this.setState({
+            result
+        })
+    }
+
+    _mult = () => {
+        const result = this.state.num1 * this.state.num2
+        this.setState({
+            result
         })
     }
 }
