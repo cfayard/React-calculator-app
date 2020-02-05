@@ -26,10 +26,13 @@ class Calculator extends React.Component {
                 <input type="number" 
                     type="number"
                     value={this.state.num2}
+                    onChange={(event) => {
+                        this._updateNumber('num2', event.target.value)
+                    }}
                 />
                 <br/>
                 <br/>
-                <button>+</button>
+                <button onClick={this._add}>+</button>
                 <button>-</button>
                 <button>/</button>
                 <button>*</button>
@@ -41,7 +44,13 @@ class Calculator extends React.Component {
 
     _updateNumber = (key, newNumber) => {
         this.setState({
-            [key]: newNumber
+            [key]: parseInt(newNumber, 10)
+        })
+    }
+
+    _add = () => {
+        this.setState({
+            result: this.state.num1 + this.state.num2
         })
     }
 }
